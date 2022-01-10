@@ -28,6 +28,12 @@ jobs:
       - name: Build hugo
         run: hugo --minify
 
+      - name: Set CNAME
+        uses: canastro/copy-action@0.0.2
+        with:
+          source: ./CNAME
+          target: ./public/CNAME
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
